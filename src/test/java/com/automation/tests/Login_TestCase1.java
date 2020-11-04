@@ -18,14 +18,24 @@ public class Login_TestCase1 extends AbstractTestBase {
           BrowserUtils.wait(2);
           settings.clicktoUserInfo();
           BrowserUtils.wait(3);
-          settings.setFirstName("Ruxa");
-          settings.setmidle("johnDoe");
-          settings.setlastName("dilion");
+          settings.setFirstName("Liqui");
+          settings.setmidle("HUb");
+          settings.setlastName("Base");
           settings.seturl("google.com");
           settings.setcompany("Liquibase");
           settings.setbio("Born in NYC");
-//settings.editUser("Rosa","Dilion","JohnDoe","Born in NY","www.google.com","Liquibase");
+          BrowserUtils.wait(2);
 settings.cliktoUpdateInfo();
+BrowserUtils.wait(5);
+
+          login.logOut();
+          BrowserUtils.wait(4);
+          login.login();
+          BrowserUtils.wait(3);
+          settings.clickToSetting();
+
+          settings.clicktoUserInfo();
+BrowserUtils.wait(2);
 
      }
 }

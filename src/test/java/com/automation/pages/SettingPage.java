@@ -37,8 +37,8 @@ public class SettingPage extends AbstractPage {
 
     @FindBy(id="mat-input-10")
     protected WebElement bio;
-//@FindBy(xpath = "//span[.='Update Profile']")
-//protected WebElement updateProfile;
+@FindBy(xpath = "//span[.='Update Profile']")
+protected WebElement updateProfile;
 
     public void clickToSetting() {
         BrowserUtils.wait(2);
@@ -76,12 +76,12 @@ public class SettingPage extends AbstractPage {
         firstName.sendKeys(first);
 
     }
-    public void setmidle(String middle) {
-        middleName.sendKeys(middle);
+    public void setmidle(String middleName1) {
+        middleName.sendKeys(middleName1);
     }
 
-    public void setlastName(String last) {
-        lastName.sendKeys(last);
+    public void setlastName(String lastName1) {
+        lastName.sendKeys(lastName1);
     }
 
     public void seturl(String url1) {
@@ -96,16 +96,14 @@ public class SettingPage extends AbstractPage {
 
     }
 public void cliktoUpdateInfo(){
-    WebElement settingBtn = Driver.getDriver().findElement(By.xpath("(//div[@class='settings-tree__item'])[1]"));
+    WebElement userInfo = Driver.getDriver().findElement(By.xpath("(//div[@class='settings-tree__item'])[1]"));
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     //use executeScript
-    jse.executeScript("arguments[0].click();",userInfo);
-
+    jse.executeScript("arguments[0].click();",updateProfile);//userinfo
 
 
 
         }
-
 
 
     public void clicktoUserInfo() {

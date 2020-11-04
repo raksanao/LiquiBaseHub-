@@ -19,6 +19,11 @@ protected WebElement password;
 protected WebElement signIn;
     @FindBy(xpath = "//span[.='close']")
     protected  WebElement popupX;
+
+    @FindBy(xpath = "//span[.='Log Out'] ")
+    protected WebElement logOut;
+
+
     public LoginPage() {
         //to connect our webdriver, page class and page factory
         //PageFactory - used to use @FindBy annotations
@@ -65,6 +70,8 @@ protected WebElement signIn;
         popupX.click();
     }
 //}
+public void logOut() {
+    logOut.click();
 
-
+}
 }

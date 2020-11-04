@@ -27,7 +27,9 @@ public class ProjectPage {
     @FindBy(css = "[role=button]")
     protected WebElement expandDropDownNoOperation;
 
-    public void cliktoProjects() {
+
+
+    public void clicktoProjects() {
 
         BrowserUtils.wait(2);
 
@@ -64,5 +66,6 @@ public class ProjectPage {
         expandDropDownNoOperation.click();
         String text = "No Operations to display.";
         Assert.assertEquals(text,expandDropDownNoOperation.getText());
+
     }
 }
