@@ -13,11 +13,12 @@ public class LoginPage {
     protected WebElement login;
 @FindBy(xpath="(//input[@name='username'])[2]")
 protected WebElement username;
-@FindBy(xpath="(//input[@placeholder='Password'] )[2]")
+@FindBy(xpath="(//input[@placeholder='Password'])[2]")
 protected WebElement password;
 @FindBy ( name= "cognitoAsfData")
 protected WebElement signIn;
-
+    @FindBy(xpath = "//span[.='close']")
+    protected  WebElement popupX;
     public LoginPage() {
         //to connect our webdriver, page class and page factory
         //PageFactory - used to use @FindBy annotations
@@ -59,6 +60,9 @@ protected WebElement signIn;
         BrowserUtils.waitForPageToLoad(10);
         BrowserUtils.wait(4);
 
+    }
+    public void closePopUp(){
+        popupX.click();
     }
 //}
 

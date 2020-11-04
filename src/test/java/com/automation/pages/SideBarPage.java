@@ -5,8 +5,10 @@ import com.automation.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SideBarPage {
+public class SideBarPage extends AbstractPage {
 
     @FindBy(xpath = "//div[2]/div[3]/div")
     protected WebElement settings;
@@ -20,12 +22,10 @@ public class SideBarPage {
         BrowserUtils.wait(4);
         PageFactory.initElements(Driver.getDriver(), this);
     }
-    public void switchToIframe(){
-        Driver.getDriver().switchTo().frame("us-entrypoint-button");
-        BrowserUtils.wait(2);
 
-     //Driver.getDriver().switchTo().defaultContent();
-     BrowserUtils.wait(3);
+    public void closePopup(){
+        BrowserUtils.wait(4);
         popupX.click();
+
     }
 }
