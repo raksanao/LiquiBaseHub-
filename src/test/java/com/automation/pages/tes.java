@@ -11,15 +11,19 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class tes {
+
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://hub-staging.liquibase.com/landing-page");
-driver.manage().window().maximize();
+        driver.manage().window().maximize();
         WebElement login = driver.findElement(By.xpath("//span[.='Log In']"));
         login.click();
         WebElement loginIn = driver.findElement(By.xpath("(//input[@name='username'])[2]"));
@@ -29,24 +33,26 @@ driver.manage().window().maximize();
         BrowserUtils.wait(3);
         WebElement signIn = driver.findElement(By.xpath("(//input[@type='Submit'])[1]"));
         signIn.submit();
-//driver.switchTo().frame("cdk-overlay-0");
-        BrowserUtils.wait(5);
-   WebElement x=     driver.findElement(By.xpath("//button[.='close']"));
-       x.click();
-        System.out.println(driver.getTitle());
-BrowserUtils.wait(4);
-       WebElement seting=   driver.findElement(By.xpath("//div[2]/div[3]/div[1]"));
-        //Actions action = new Actions(driver);
-       // action.moveToElement(seting).click().perform();
-        //WebDriverWait wait=new WebDriverWait(driver,20);
-       /// wait.until(ExpectedConditions.visibilityOf(seting));
-        BrowserUtils.wait(4);
-     seting.click();
-        List<WebElement>icons=driver.findElements(By.cssSelector("[role='img']"));
-       // for (int i = 0; i <icons.size() ; i++) {
-          //  System.out.println( icons.get(i).getText());
-WebElement n=icons.get(5);
-n.click();
 
+
+        BrowserUtils.wait(5);
+        WebElement x = driver.findElement(By.xpath("//button[.='close']"));
+        x.click();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//mat-icon[contains(text(),'settings')]"))).click();
+
+
+        WebElement setting = driver.findElement(By.xpath("//mat-icon[contains(text(),'settings')]"));
+        //  setting.click();
+
+
+        if (driver.findElement(By.xpath("//mat-icon[contains(text(),'settings")).isDisplayed()) {
+            {
+                WebDriverWait waitForElement = new WebDriverWait(driver, 10);
+                waitForElement.until(ExpectedConditions.invisibilityOfElementLocated((By.xpath("//mat-icon[contains(text(),'settings"))));
+            }
+            setting.click();
+
+        }
     }
 }
