@@ -31,9 +31,7 @@ protected WebElement signIn;
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-   // public String getWarningMessageText() {
-       // return warningMessage.getText();
- //   }
+
 
     /**
      * Method to login, version #1
@@ -69,7 +67,7 @@ protected WebElement signIn;
     public void closePopUp(){
         popupX.click();
     }
-//}
+
 public void logOut() {
     logOut.click();
 

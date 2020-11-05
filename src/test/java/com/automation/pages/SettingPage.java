@@ -7,8 +7,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+
 
 public class SettingPage extends AbstractPage {
 
@@ -37,19 +38,16 @@ public class SettingPage extends AbstractPage {
 
     @FindBy(id="mat-input-10")
     protected WebElement bio;
-@FindBy(xpath = "//span[.='Update Profile']")
-protected WebElement updateProfile;
 
     public void clickToSetting() {
-        BrowserUtils.wait(2);
-        //settings.click();
+
         BrowserUtils.wait(4);
         PageFactory.initElements(Driver.getDriver(), this);
 
         WebElement settingBtn = Driver.getDriver().findElement(By.xpath("//*[text()='settings']"));
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         //use executeScript
-        jse.executeScript("arguments[0].click();",settingBtn);
+        jse.executeScript("arguments[0].click();", settingBtn);
 
     }
 
@@ -58,19 +56,7 @@ protected WebElement updateProfile;
         popupX.click();
 
     }
-//    public void editUser(String firstname,String middlename,String lastName1,String bio1,String url1,String company1) {
-//        firstName.sendKeys(firstname);
-//        BrowserUtils.wait(3);
-//        middleName.sendKeys(middlename);
-//        BrowserUtils.wait(3);
-//        lastName.sendKeys(lastName1);
-//
-//        BrowserUtils.wait(3);
-//        url.sendKeys(url1);
-//        BrowserUtils.wait(4);
-//        company.sendKeys(company1);
-//        BrowserUtils.wait(3);
-//        bio.sendKeys(bio1);
+
 
     public void setFirstName(String first){
         firstName.sendKeys(first);
@@ -96,10 +82,11 @@ protected WebElement updateProfile;
 
     }
 public void cliktoUpdateInfo(){
-    WebElement userInfo = Driver.getDriver().findElement(By.xpath("(//div[@class='settings-tree__item'])[1]"));
+    WebElement updateProfile = Driver.getDriver().findElement(By.xpath("//span[.='Update Profile']"));
+
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-    //use executeScript
-    jse.executeScript("arguments[0].click();",updateProfile);//userinfo
+   // use executeScript
+    jse.executeScript("arguments[0].click();",updateProfile);
 
 
 
@@ -109,4 +96,19 @@ public void cliktoUpdateInfo(){
     public void clicktoUserInfo() {
         userInfo.click();
     }
-}
+
+
+    public String getFirstName(){
+        return  firstName.getText();
+    }
+
+public String  pageTitle(){
+      return   driver.getTitle();
+    }
+    public String pageUrl(){
+        return  driver.getCurrentUrl();
+    }
+
+
+    }
+
