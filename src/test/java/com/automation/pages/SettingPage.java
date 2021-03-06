@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
@@ -14,31 +15,34 @@ import java.util.List;
 public class SettingPage extends AbstractPage {
 
     @FindBy(xpath = "//div[2]/div[3]/div")
-    protected WebElement settings;
+   protected WebElement settings;
 
     @FindBy(xpath = "//span[.='close']")
-    protected  WebElement popupX;
+    protected WebElement popupX;
 
-    @FindBy(xpath="(//div[@class='settings-tree__item'])[1]")
+    @FindBy(xpath = "(//div[@class='settings-tree__item'])[1]")
     protected WebElement userInfo;
-    @FindBy(css="input[id='mat-input-3']" )
+    @FindBy(css = "input[id='mat-input-3']")
     protected WebElement firstName;
 
-    @FindBy(css="input[id='mat-input-4']" )
+    @FindBy(css = "input[id='mat-input-4']")
     protected WebElement middleName;
 
-    @FindBy(css="input[id='mat-input-5']" )
+    @FindBy(css = "input[id='mat-input-5']")
     protected WebElement lastName;
 
-    @FindBy(css="input[id='mat-input-8']" )
+    @FindBy(css = "input[id='mat-input-8']")
     protected WebElement url;
 
-    @FindBy(css="input[id='mat-input-9']" )
+    @FindBy(css = "input[id='mat-input-9']")
     protected WebElement company;
 
-    @FindBy(id="mat-input-10")
+    @FindBy(id = "mat-input-10")
     protected WebElement bio;
 
+    public boolean getSettings(){
+        return settings.isEnabled();
+    }
     public void clickToSetting() {
 
         BrowserUtils.wait(4);
@@ -51,17 +55,18 @@ public class SettingPage extends AbstractPage {
 
     }
 
-    public void closePopup(){
+    public void closePopup() {
         BrowserUtils.wait(4);
         popupX.click();
 
     }
 
 
-    public void setFirstName(String first){
+    public void setFirstName(String first) {
         firstName.sendKeys(first);
 
     }
+
     public void setmidle(String middleName1) {
         middleName.sendKeys(middleName1);
     }
@@ -73,24 +78,26 @@ public class SettingPage extends AbstractPage {
     public void seturl(String url1) {
         url.sendKeys(url1);
     }
+
     public void setcompany(String comp) {
         company.sendKeys(comp);
 
     }
+
     public void setbio(String bio1) {
         bio.sendKeys(bio1);
 
     }
-public void cliktoUpdateInfo(){
-    WebElement updateProfile = Driver.getDriver().findElement(By.xpath("//span[.='Update Profile']"));
 
-    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-   // use executeScript
-    jse.executeScript("arguments[0].click();",updateProfile);
+    public void cliktoUpdateInfo() {
+        WebElement updateProfile = Driver.getDriver().findElement(By.xpath("//span[.='Update Profile']"));
+
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        // use executeScript
+        jse.executeScript("arguments[0].click();", updateProfile);
 
 
-
-        }
+    }
 
 
     public void clicktoUserInfo() {
@@ -98,17 +105,55 @@ public void cliktoUpdateInfo(){
     }
 
 
-    public String getFirstName(){
-        return  firstName.getText();
+    public String getFirstName() {
+        return firstName.getText();
     }
 
-public String  pageTitle(){
-      return   driver.getTitle();
+    public String pageTitle() {
+        return driver.getTitle();
     }
-    public String pageUrl(){
-        return  driver.getCurrentUrl();
+
+    public String pageUrl() {
+        return driver.getCurrentUrl();
     }
+
+    public void nameIn(String nameInput) {
+        BrowserUtils.wait(2);
+        firstName.sendKeys(nameInput);
 
 
     }
+
+    public void midlename(String midInput) {
+        BrowserUtils.wait(2);
+        middleName.sendKeys(midInput);
+
+    }
+
+    public void lastName(String lastInput) {
+        BrowserUtils.wait(2);
+        lastName.sendKeys(lastInput);
+
+
+    }
+
+    public void url(String urlInput) {
+        BrowserUtils.wait(2);
+        url.sendKeys(urlInput);
+
+
+    }
+
+    public void compname(String compInput) {
+        BrowserUtils.wait(2);
+       company.sendKeys(compInput);
+
+    }
+
+    public void bio(String bioInput) {
+        BrowserUtils.wait(2);
+      bio.sendKeys(bioInput);
+    }
+}
+
 

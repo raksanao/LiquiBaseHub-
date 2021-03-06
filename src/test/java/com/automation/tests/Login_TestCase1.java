@@ -4,6 +4,7 @@ import com.automation.pages.SettingPage;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.ConfigurationReader;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class Login_TestCase1 extends AbstractTestBase {
@@ -14,7 +15,7 @@ public class Login_TestCase1 extends AbstractTestBase {
           BrowserUtils.wait(4);
           login.closePopUp();
 
-          SettingPage settings=new SettingPage();
+          SettingPage settings = new SettingPage();
           settings.clickToSetting();
           BrowserUtils.wait(2);
           settings.clicktoUserInfo();
@@ -23,24 +24,28 @@ public class Login_TestCase1 extends AbstractTestBase {
 
 
           settings.setmidle("HUb");
+         
           settings.setlastName("Base");
           settings.seturl("google.com");
           settings.setcompany("Liquibase");
-          settings.setbio("Born in NYC");
+          settings.setbio(" NYC");
           BrowserUtils.wait(2);
           settings.cliktoUpdateInfo();
+          Assert.assertEquals(settings.pageTitle(), "Liquibase Hub");
 
+          String url = "https://hub-staging.liquibase.com/settings/user-info";
+          Assert.assertEquals(settings.pageUrl(), url);
+Assert.assertEquals(settings.getSettings(),true);
 
 //          login.logOut();
 //          BrowserUtils.wait(4);
 //          login.login();
 //          BrowserUtils.wait(3);
 //          settings.clickToSetting();
-
-         // settings.clicktoUserInfo();
+//
+//           settings.clicktoUserInfo();
 //BrowserUtils.wait(2);
-Assert.assertEquals(settings.pageTitle(),"Liquibase Hub");;
-String url="https://hub-staging.liquibase.com/settings/user-info";
-Assert.assertEquals(settings.pageUrl(),url );
+
      }
 }
+
